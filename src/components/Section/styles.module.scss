@@ -1,0 +1,19 @@
+.sectionContainer {
+  background-color: var(--color-secundary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 50px;
+  align-items: flex-start;
+  div {
+    h2 {
+      font-weight: 700;
+      font-size: var(--title-2);
+      color: white;
+    }
+    p {
+      color: white;
+      font-size: var(--paragraph);
+    }
+  }
+}

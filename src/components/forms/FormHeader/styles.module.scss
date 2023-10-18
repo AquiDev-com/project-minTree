@@ -1,0 +1,15 @@
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  h2 {
+    font-weight: 700;
+    font-size: var(--title-1);
+    color: var(--color-text1);
+  }
+  p {
+    color: var(--color-text1);
+    font-size: var(--title-2);
+    text-align: center;
+  }
+}

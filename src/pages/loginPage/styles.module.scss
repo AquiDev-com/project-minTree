@@ -1,0 +1,9 @@
+.pageContainer {
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+
+    background-color: var(--color-primary);
+  }
+}
