@@ -1,16 +1,17 @@
 .primaryButton {
-  width: 140px;
+  width: 130px;
   border: none;
-  background-color: var(--color-secundary);
+  background-color: var(--color1);
   color: white;
   font-weight: 600;
   padding: 5px;
+  margin-top: 10px;
 }
 .secondaryButton {
-  width: 140px;
+  width: 130px;
   border: none;
   background-color: white;
-  color: var(--color-secundary);
+  color: var(--color1);
   font-weight: 600;
   padding: 5px;
 }

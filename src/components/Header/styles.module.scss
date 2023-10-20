@@ -1,6 +1,8 @@
 .headerContainer {
-  background-color: var(--color-primary);
-  padding: 15px;
+  background-color: var(--color4);
+  padding: 30px 10px;
+
+  border-bottom: 1px solid var(--color3);
   h1 {
     color: black;
     font-size: var(--title-1);

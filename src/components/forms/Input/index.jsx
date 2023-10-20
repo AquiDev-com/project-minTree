@@ -1,9 +1,9 @@
 import styles from "./styles.module.scss";
 
-const Input = ({ id, type, placeholder, icon }) => {
+const Input = ({ label, id, type, placeholder}) => {
   return (
     <div className={styles.inputContainer}>
-      {icon && <div>{icon}</div>}
+      <label htmlFor={id}>{label}</label>
       <input name={id} id={id} type={type} placeholder={placeholder} />
     </div>
   );

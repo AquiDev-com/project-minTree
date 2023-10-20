@@ -10,7 +10,8 @@ const LoginPage = () => {
           <FormLogin />
           <Section
             title="Nova conta?"
-            paragraph="Crie sua conta e aproveite tudo que temos a oferecer!"
+            paragraph="Crie sua conta e aproveite
+            tudo que temos a oferecer!"
             text="Registrar-se"
             to="/registrar"
           />
