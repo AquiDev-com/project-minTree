@@ -14,6 +14,13 @@ const FormRegister = () => {
       <form className={styles.formContainer}>
         <FormHeader title="Faça seu cadastro" text="Crie sua conta" />
         <div className={styles.divContainer}>
+        <Input
+            label="Nome:"
+            placeholder="Adicione seu nome"
+            type="text"
+            id="name"
+            required
+          />
           <Input
             label="E-mail:"
             placeholder="Adicione seu e-mail"
@@ -21,6 +28,7 @@ const FormRegister = () => {
             id="email"
             required
           />
+          
           <Input
             label="Senha:"
             placeholder="Adicione sua senha"
