@@ -1,4 +1,4 @@
-import { FormRegister, Header, Section } from "../../components";
+import { Banner, FormRegister, Header } from "../../components";
 import styles from "./styles.module.scss";
 
 const RegisterPage = () => {
@@ -8,11 +8,11 @@ const RegisterPage = () => {
         <Header />
         <main>
           <FormRegister />
-          <Section
+          <Banner
             title="Já possui uma conta?"
             paragraph="Entre agora mesmo e aproveite tudo que temos a oferecer!"
             text="Entrar"
-            to="/entrar"
+            to="/"
           />
         </main>
       </div>

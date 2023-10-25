@@ -1,6 +1,23 @@
 import Button from "./Button";
-import { FormLogin, FormRegister } from "./forms";
+import {
+  FormResetEmail,
+  FormLogin,
+  FormRegister,
+  FormResetPassword,
+} from "./forms";
 import Header from "./Header/index";
-import Section from "./Section";
+import OrComponent from "./OrComponent";
+import Banner from "./Banner";
+import Navegation from "./Navegation";
 
-export { FormLogin, FormRegister, Header, Section, Button };
+export {
+  Navegation,
+  FormResetEmail,
+  OrComponent,
+  FormResetPassword,
+  FormLogin,
+  FormRegister,
+  Header,
+  Banner,
+  Button,
+};

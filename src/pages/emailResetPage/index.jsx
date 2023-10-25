@@ -1,16 +1,16 @@
-import { FormResetPassword, Header } from "../../components/index";
+import { FormResetEmail, Header } from "../../components";
 import styles from "./styles.module.scss";
 
-const PasswordResetPage = () => {
+const EmailResetPage = () => {
   return (
     <>
       <div className={styles.pageContainer}>
         <Header></Header>
         <main>
-          <FormResetPassword />
+          <FormResetEmail />
         </main>
       </div>
     </>
   );
 };
-export default PasswordResetPage;
+export default EmailResetPage;

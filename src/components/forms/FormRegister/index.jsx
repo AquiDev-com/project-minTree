@@ -1,3 +1,4 @@
+import { OrComponent } from "../..";
 import Button from "../../Button";
 import FormHeader from "../FormHeader";
 import Input from "../Input";
@@ -14,7 +15,7 @@ const FormRegister = () => {
       <form className={styles.formContainer}>
         <FormHeader title="Faça seu cadastro" text="Crie sua conta" />
         <div className={styles.divContainer}>
-        <Input
+          <Input
             label="Nome:"
             placeholder="Adicione seu nome"
             type="text"
@@ -28,7 +29,7 @@ const FormRegister = () => {
             id="email"
             required
           />
-          
+
           <Input
             label="Senha:"
             placeholder="Adicione sua senha"
@@ -36,15 +37,11 @@ const FormRegister = () => {
             id="password"
             required
           />
-          <span>Esqueceu sua senha?</span>
         </div>
         <Button text="Registrar" styleType="primary" />
 
-        <div className={styles.orContainer}>
-          <div className={styles.line}></div>
-          <div className={styles.or}>OU</div>
-          <div className={styles.line}></div>
-        </div>
+        <OrComponent />
+
         <div className={styles.socialContainer}>
           <LiaFacebookSquare />
           <LiaInstagram />

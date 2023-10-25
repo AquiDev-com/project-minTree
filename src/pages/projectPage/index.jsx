@@ -1,8 +1,19 @@
-const ProjectPage = () => {
+import { Header, FormLogin, Banner } from "../../components";
+import Navegation from "../../components/Navegation";
+import { FormProject } from "../../components/forms";
+import styles from "./styles.module.scss";
 
-return (
-<>
-  <h1>Pagina de configura;ao</h1>
-</>
-)}
-export default ProjectPage
+const ProjectPage = () => {
+  return (
+    <>
+      <div className={styles.pageContainer}>
+        <Header />
+        <Navegation />
+        <main>
+          <FormProject />
+        </main>
+      </div>
+    </>
+  );
+};
+export default ProjectPage;

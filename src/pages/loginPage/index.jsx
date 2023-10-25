@@ -1,4 +1,4 @@
-import { Header, FormLogin, Section } from "../../components";
+import { Header, FormLogin, Banner } from "../../components";
 import styles from "./styles.module.scss";
 
 const LoginPage = () => {
@@ -8,7 +8,7 @@ const LoginPage = () => {
         <Header></Header>
         <main>
           <FormLogin />
-          <Section
+          <Banner
             title="Nova conta?"
             paragraph="Crie sua conta e aproveite
             tudo que temos a oferecer!"

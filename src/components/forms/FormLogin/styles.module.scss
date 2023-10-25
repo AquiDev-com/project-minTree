@@ -10,6 +10,7 @@
     flex-direction: column;
     gap: 15px;
   }
+  a,
   span {
     color: var(--color3);
     font-size: 10px;
@@ -17,22 +18,6 @@
     font-weight: bold;
   }
 
-  .orContainer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    .line {
-      width: 90px;
-      height: 1px;
-      background-color: var(--color3);
-    }
-    .or {
-      color: var(--color3);
-      font-weight: bold;
-      font-size: 10px;
-    }
-  }
   .socialContainer {
     color: var(--color1);
     display: flex;

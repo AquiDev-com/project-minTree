@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../Button";
 import styles from "./styles.module.scss";
 
-const Section = ({ title, paragraph, text, to }) => {
+const Banner = ({ title, paragraph, text, to }) => {
   return (
     <section className={styles.sectionContainer}>
       <div>
@@ -16,4 +16,4 @@ const Section = ({ title, paragraph, text, to }) => {
   );
 };
 
-export default Section;
+export default Banner;

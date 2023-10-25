@@ -2,7 +2,13 @@ import Button from "../../Button";
 import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
-import { LiaFacebookSquare, LiaInstagram, LiaTwitterSquare } from "react-icons/lia";
+import { Link } from "react-router-dom";
+import {
+  LiaFacebookSquare,
+  LiaInstagram,
+  LiaTwitterSquare,
+} from "react-icons/lia";
+import { OrComponent } from "../..";
 
 const FormLogin = () => {
   return (
@@ -27,20 +33,18 @@ const FormLogin = () => {
             id="password"
             required
           />
-          <span>Esqueceu sua senha?</span>
+          <Link to="/recuperar-email">
+            <span>Esqueceu sua senha?</span>
+          </Link>
         </div>
         <Button text="Entrar" styleType="primary" />
 
-        <div className={styles.orContainer}>
-          <div className={styles.line}></div>
-          <div className={styles.or}>OU</div>
-          <div className={styles.line}></div>
-        </div>
+        <OrComponent />
 
         <div className={styles.socialContainer}>
           <LiaFacebookSquare />
           <LiaInstagram />
-          <LiaTwitterSquare/>
+          <LiaTwitterSquare />
         </div>
       </form>
     </>
