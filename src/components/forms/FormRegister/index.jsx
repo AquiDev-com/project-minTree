@@ -1,13 +1,9 @@
 import { OrComponent } from "../..";
 import Button from "../../Button";
+import Social from "../../Social";
 import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
-import {
-  LiaFacebookSquare,
-  LiaInstagram,
-  LiaTwitterSquare,
-} from "react-icons/lia";
 
 const FormRegister = () => {
   return (
@@ -42,11 +38,7 @@ const FormRegister = () => {
 
         <OrComponent />
 
-        <div className={styles.socialContainer}>
-          <LiaFacebookSquare />
-          <LiaInstagram />
-          <LiaTwitterSquare />
-        </div>
+        <Social />
       </form>
     </>
   );

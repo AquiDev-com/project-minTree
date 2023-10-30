@@ -3,12 +3,8 @@ import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
-import {
-  LiaFacebookSquare,
-  LiaInstagram,
-  LiaTwitterSquare,
-} from "react-icons/lia";
 import { OrComponent } from "../..";
+import Social from "../../Social";
 
 const FormLogin = () => {
   return (
@@ -41,11 +37,7 @@ const FormLogin = () => {
 
         <OrComponent />
 
-        <div className={styles.socialContainer}>
-          <LiaFacebookSquare />
-          <LiaInstagram />
-          <LiaTwitterSquare />
-        </div>
+        <Social />
       </form>
     </>
   );
