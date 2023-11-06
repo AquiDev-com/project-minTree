@@ -1,4 +1,4 @@
-import { OrComponent } from "../..";
+import OrComponent from "../../OrComponent";
 import Button from "../../Button";
 import Social from "../../Social";
 import FormHeader from "../FormHeader";

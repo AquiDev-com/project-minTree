@@ -1,7 +1,20 @@
 .socialContainer {
-    color: var(--color1);
+  color: var(--color1);
+  flex-direction: column;
+  display: flex;
+  gap: 15px;
+  cursor: pointer;
+
+  button {
+    border: none;
     display: flex;
-    gap: 15px;
-    font-size: 30px;
-    cursor: pointer;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color5);
+    color: var(--color1);
+    font-weight: 600;
+    svg {
+      font-size: 30px;
+    }
+  }
 }

@@ -1,0 +1,11 @@
+.pageContainer {
+  Header {
+    height: 75px;
+    border: none;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+}

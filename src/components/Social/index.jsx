@@ -1,16 +1,19 @@
 import styles from "./styles.module.scss";
-import {
-    LiaFacebookSquare,
-    LiaInstagram,
-    LiaTwitterSquare,
-} from "react-icons/lia";
+import { AiFillFacebook, AiFillGoogleSquare } from "react-icons/ai";
 
 const Social = () => {
-    return <div className={styles.socialContainer}>
-        <LiaFacebookSquare />
-        <LiaInstagram />
-        <LiaTwitterSquare />
-    </div>;
+  return (
+    <div className={styles.socialContainer}>
+      <button>
+        <AiFillFacebook />
+        Entrar com facebook
+      </button>
+      <button>
+        <AiFillGoogleSquare />
+        Entrar com google
+      </button>
+    </div>
+  );
 };
 
 export default Social;

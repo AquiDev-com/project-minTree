@@ -1,0 +1,28 @@
+.pageContainer {
+  main {
+    margin: auto;
+    justify-content: center;
+    display: flex;
+
+    .buttonContainer {
+      margin: 20px;
+      a {
+        text-decoration: none;
+        button {
+          border: none;
+          background-color: var(--color5);
+          font-size: 15px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          svg {
+            color: green;
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}

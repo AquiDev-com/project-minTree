@@ -4,10 +4,11 @@ import FormProject from "./FormProject";
 import FormRegister from "./FormRegister";
 import FormResetEmail from "./FormResetEmail";
 import FormResetPassword from "./FormResetPassword";
-
 import Input from "./Input";
+import SelectInput from "./SelectInput/index";
 
 export {
+  SelectInput,
   FormProject,
   FormResetEmail,
   FormResetPassword,

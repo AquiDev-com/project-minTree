@@ -9,7 +9,7 @@ const ProjectsPage = () => {
       <Header />
       <Navegation />
       <main>
-        <div>
+        <div className={styles.buttonContainer}>
           <Link to="/projeto">
             <button>
               <IoAddCircleSharp /> Criar um novo projeto

@@ -4,5 +4,12 @@
     flex-direction: column;
     gap: 50px;
     background-color: var(--color5);
+    margin: auto;
+    form {
+      max-width: 375px;
+      margin: auto;
+      padding-top: 50px;
+      height: 530px;
+    }
   }
 }

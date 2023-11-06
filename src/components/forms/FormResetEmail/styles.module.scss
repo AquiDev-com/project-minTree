@@ -1,15 +1,15 @@
 .formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 70px;
+  align-items: center;
+  background-color: var(--color5);
+
+  .divContainer {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 70px;
+    gap: 15px;
     align-items: center;
-    background-color: var(--color5);
-  
-    .divContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
   }
-  
+}
