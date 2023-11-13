@@ -4,6 +4,8 @@ import styles from "./styles.module.scss";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { MdOutlineDelete } from "react-icons/md";
 import SelectInput from "../SelectInput";
+import InputColor from "../InputColor";
+import Button from "../../Button";
 
 const generateRandomId = () => {
   return Math.random().toString(36).substr(2, 9);
@@ -20,6 +22,8 @@ const FormProject = () => {
     "LinkedIn",
     "WhatsApp",
     "Telegram",
+    "Twitch",
+    "Youtube",
   ];
   const fileInputRef = useRef(null);
 
@@ -82,7 +86,7 @@ const FormProject = () => {
         <Input
           label="Nome"
           placeholder="Nome do projeto"
-          type="text"
+          type="description"
           id="name"
           required
         />
@@ -93,6 +97,15 @@ const FormProject = () => {
           placeholder="Descrição do projeto"
           type="text"
           id="bio"
+          required
+        />
+      </div>
+      <div className={styles.favColorContainer}>
+        <InputColor
+          label="Escolha sua cor favorita:"
+          type="color"
+          id="favColor"
+          defaultvalue="#4180AB"
           required
         />
       </div>
@@ -130,6 +143,7 @@ const FormProject = () => {
           </div>
         ))}
       </div>
+      <Button type="submit" text="Criar perfil" styleType="primary"></Button>
     </form>
   );
 };

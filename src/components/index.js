@@ -8,10 +8,10 @@ import {
 import Header from "./Header/index";
 import OrComponent from "./OrComponent";
 import Banner from "./Banner";
-import Navegation from "./Navegation";
+import ProjectCard from "./ProjectCard";
 
 export {
-  Navegation,
+  ProjectCard,
   FormResetEmail,
   OrComponent,
   FormResetPassword,

@@ -1,17 +1,17 @@
 import ProjectPage from "./projectPage";
-import HomePage from "./homePage";
 import LoginPage from "./loginPage";
 import PasswordResetPage from "./passwordResetPage";
 import EmailResetPage from "./emailResetPage";
-import ProjectsPage from "./projectsPage";
+import ProjectsPage from "./homePage";
 import RegisterPage from "./registerPage";
+import HomePage from "./homePage";
 
 export {
-  ProjectPage,
   HomePage,
+  ProjectPage,
   LoginPage,
   PasswordResetPage,
   ProjectsPage,
   RegisterPage,
-  EmailResetPage
+  EmailResetPage,
 };

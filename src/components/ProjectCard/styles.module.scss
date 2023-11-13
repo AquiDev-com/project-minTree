@@ -1,0 +1,9 @@
+.cardContainer {
+  display: flex;
+  background-color: var(--color1);
+
+  .qrCodeContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
