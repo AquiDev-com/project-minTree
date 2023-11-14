@@ -5,11 +5,31 @@ import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
 import { OrComponent } from "../..";
 import Social from "../../Social";
+import { UserContext } from "../../../providers/userContext";
+import { useContext } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import LoginFormSchema from "./login.form.schema";
 
 const FormLogin = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(LoginFormSchema) });
+
+  const { userLogin } = useContext(UserContext);
+
+  const submit = (payload) => {
+    console.log("password:", payload.password);
+    console.log("email:", payload.email);
+
+    userLogin(payload);
+  };
+
   return (
     <>
-      <form className={styles.formContainer}>
+      <form className={styles.formContainer} onSubmit={handleSubmit(submit)}>
         <FormHeader
           title="Faça o  login em sua conta"
           text="Insira seu e-mail e senha. "
@@ -20,20 +40,25 @@ const FormLogin = () => {
             placeholder="Adicione seu e-mail"
             type="email"
             id="email"
-            required
+            error={errors.email}
+            {...register("email")}
           />
+          {errors.email ? <p>{errors.email.message}</p> : null}
           <Input
             label="Senha:"
             placeholder="Adicione sua senha"
             type="password"
             id="password"
-            required
+            error={errors.password}
+            {...register("password")}
           />
+          {errors.password ? <p>{errors.password.message}</p> : null}
+
           <Link to="/recuperar-email">
             <span>Esqueceu sua senha?</span>
           </Link>
         </div>
-        <Button text="Entrar" styleType="primary" />
+        <Button text="Entrar" styleType="primary" type="submit" />
 
         <OrComponent />
 

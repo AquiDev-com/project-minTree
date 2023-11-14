@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { BsArrowReturnLeft } from "react-icons/bs";
+import { useContext } from "react";
+import { UserContext } from "../../providers/userContext";
 
-const Header = ({ showButton }) => {
+const Header = ({ showButton, showLogout }) => {
+  const { userLogout } = useContext(UserContext);
+
   return (
     <>
       <header className={styles.headerContainer}>
@@ -13,6 +17,12 @@ const Header = ({ showButton }) => {
               <BsArrowReturnLeft />
             </button>
           </Link>
+        )}
+
+        {showLogout && (
+          <button onClick={userLogout}>
+            <BsArrowReturnLeft />
+          </button>
         )}
       </header>
     </>
