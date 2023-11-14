@@ -5,7 +5,7 @@ import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import { useContext } from "react";
-import { UserContext } from "../../../providers/userContext";
+import { UserContext } from "../../../providers/UserContext";
 import { useForm } from "react-hook-form";
 import RegisterFormSchema from "./register.form.schema";
 import { zodResolver } from "@hookform/resolvers/zod";

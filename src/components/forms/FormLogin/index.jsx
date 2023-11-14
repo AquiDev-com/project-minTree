@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
 import { OrComponent } from "../..";
 import Social from "../../Social";
-import { UserContext } from "../../../providers/userContext";
+import { UserContext } from "../../../providers/UserContext";
 import { useContext } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -21,9 +21,6 @@ const FormLogin = () => {
   const { userLogin } = useContext(UserContext);
 
   const submit = (payload) => {
-    console.log("password:", payload.password);
-    console.log("email:", payload.email);
-
     userLogin(payload);
   };
 
@@ -31,7 +28,7 @@ const FormLogin = () => {
     <>
       <form className={styles.formContainer} onSubmit={handleSubmit(submit)}>
         <FormHeader
-          title="Faça o  login em sua conta"
+          title="Faça o login em sua conta"
           text="Insira seu e-mail e senha. "
         />
         <div className={styles.divContainer}>

@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "./reset.scss";
 import "./global.scss";
-import { UserProvider } from "./providers/userContext.jsx";
+import { UserProvider } from "./providers/UserContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

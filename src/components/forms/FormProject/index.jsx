@@ -6,6 +6,10 @@ import { MdOutlineDelete } from "react-icons/md";
 import SelectInput from "../SelectInput";
 import InputColor from "../InputColor";
 import Button from "../../Button";
+import { z } from "zod";
+import axios from "axios";
+import { api } from "../../../services/api";
+import { toast } from "react-toastify";
 
 const generateRandomId = () => {
   return Math.random().toString(36).substr(2, 9);
@@ -26,10 +30,34 @@ const FormProject = () => {
     "Youtube",
   ];
   const fileInputRef = useRef(null);
+  const schema = z.object({
+    name: z.string().nonempty("Name is required"),
+    bio: z.string().nonempty("Bio is required"),
+    favColor: z.string().nonempty("Favorite color is required"),
+  });
+  const [projectData, setprojectData] = useState({
+    name: "",
+    bio: "",
+    favColor: "#4180AB",
+  });
+  
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    setprojectData({
+      ...projectData,
+      [e.target.id]: e.target.value,
+    });
+  
+    setErrors({
+      ...errors,
+      [e.target.id]: undefined,
+    });
+  };
 
   const handleOptionSelect = (option) => {
     const id = generateRandomId();
-    setSelectedOptions([...selectedOptions, { id, option }]);
+    setSelectedOptions([...selectedOptions, { id, option, value: '' }]);
     setSelectedOption("");
   };
 
@@ -53,8 +81,63 @@ const FormProject = () => {
     fileInputRef.current.click();
   };
 
-  const handleSubmit = (e) => {
+  const handleSocialInput = (value, optionId) => {
+    const updatedOptions = selectedOptions.map(option => {
+      if (option.id === optionId) {
+        return { ...option, value };
+      }
+      return option;
+    });
+  
+    setSelectedOptions(updatedOptions);
+  };
+
+  const getButtons = () => {
+    const buttons = selectedOptions.map(option => {
+      return {
+        title: option.option,
+        icon: 'none',
+        url: option.value,
+      }
+    });
+
+    return JSON.stringify(buttons);
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const validatedData = schema.parse(projectData);
+ 
+      const formData = new FormData();
+      formData.append("title", validatedData.name);
+      formData.append("description", validatedData.bio);
+      formData.append("primary_color", validatedData.favColor);
+      formData.append("buttons", getButtons());
+
+      if (fileInputRef.current.files.length > 0) {
+        formData.append("image", fileInputRef.current.files[0]);
+      }
+      
+      const token = localStorage.getItem("@TOKEN");
+
+      const response = await api.post("/project", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Authorization": `Bearer ${token}`
+        },
+      });
+
+      toast.success('Projeto criado com sucesso, redirecionando...');
+      // TODO: redirecionar para a página de edição do projeto
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setErrors(error.formErrors.fieldErrors);
+      } else {
+        console.error(error);
+      }
+    }
   };
 
   return (
@@ -85,19 +168,25 @@ const FormProject = () => {
       <div className={styles.nameInputContainer}>
         <Input
           label="Nome"
-          placeholder="Nome do projeto"
+          placeholder="Nome do Projeto"
           type="description"
           id="name"
           required
+          value={projectData.name}
+          onChange={handleInputChange}
+          error={errors.name}
         />
       </div>
       <div className={styles.bioInputContainer}>
         <Input
           label="Bio"
-          placeholder="Descrição do projeto"
+          placeholder="Descrição"
           type="text"
           id="bio"
           required
+          value={projectData.bio}
+          onChange={handleInputChange}
+          error={errors.bio}
         />
       </div>
       <div className={styles.favColorContainer}>
@@ -105,8 +194,11 @@ const FormProject = () => {
           label="Escolha sua cor favorita:"
           type="color"
           id="favColor"
-          defaultvalue="#4180AB"
+          defaultValue="#4180AB"
           required
+          value={projectData.favColor}
+         onChange={handleInputChange}
+          error={errors.favColor}
         />
       </div>
       <div className={styles.optionsContainer}>
@@ -139,11 +231,12 @@ const FormProject = () => {
               placeholder={`Adicione o link do seu ${option.option}`}
               type="text"
               required
+              onChange={(e) => handleSocialInput(e.target.value, option.id)}
             />
           </div>
         ))}
       </div>
-      <Button type="submit" text="Criar perfil" styleType="primary"></Button>
+      <Button type="submit" text="Confirmar" styleType="primary" />
     </form>
   );
 };
