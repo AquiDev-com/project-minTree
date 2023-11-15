@@ -7,9 +7,9 @@ import SelectInput from "../SelectInput";
 import InputColor from "../InputColor";
 import Button from "../../Button";
 import { z } from "zod";
-import axios from "axios";
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const generateRandomId = () => {
   return Math.random().toString(36).substr(2, 9);
@@ -40,7 +40,7 @@ const FormProject = () => {
     bio: "",
     favColor: "#4180AB",
   });
-  
+
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
@@ -48,7 +48,7 @@ const FormProject = () => {
       ...projectData,
       [e.target.id]: e.target.value,
     });
-  
+
     setErrors({
       ...errors,
       [e.target.id]: undefined,
@@ -57,7 +57,7 @@ const FormProject = () => {
 
   const handleOptionSelect = (option) => {
     const id = generateRandomId();
-    setSelectedOptions([...selectedOptions, { id, option, value: '' }]);
+    setSelectedOptions([...selectedOptions, { id, option, value: "" }]);
     setSelectedOption("");
   };
 
@@ -82,55 +82,58 @@ const FormProject = () => {
   };
 
   const handleSocialInput = (value, optionId) => {
-    const updatedOptions = selectedOptions.map(option => {
+    const updatedOptions = selectedOptions.map((option) => {
       if (option.id === optionId) {
         return { ...option, value };
       }
       return option;
     });
-  
+
     setSelectedOptions(updatedOptions);
   };
 
   const getButtons = () => {
-    const buttons = selectedOptions.map(option => {
+    const buttons = selectedOptions.map((option) => {
       return {
         title: option.option,
-        icon: 'none',
+        icon: "none",
         url: option.value,
-      }
+      };
     });
 
     return JSON.stringify(buttons);
-  }
+  };
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const validatedData = schema.parse(projectData);
- 
+
       const formData = new FormData();
       formData.append("title", validatedData.name);
-      formData.append("description", validatedData.bio);
+      formData.append("bio", validatedData.bio);
       formData.append("primary_color", validatedData.favColor);
       formData.append("buttons", getButtons());
 
       if (fileInputRef.current.files.length > 0) {
         formData.append("image", fileInputRef.current.files[0]);
       }
-      
+      console.log("Form Values:", projectData);
+
       const token = localStorage.getItem("@TOKEN");
 
       const response = await api.post("/project", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          "Authorization": `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
       });
 
-      toast.success('Projeto criado com sucesso, redirecionando...');
-      // TODO: redirecionar para a página de edição do projeto
+      toast.success("Projeto criado com sucesso, redirecionando...");
+      navigate("/home");
     } catch (error) {
       if (error instanceof z.ZodError) {
         setErrors(error.formErrors.fieldErrors);
@@ -169,7 +172,7 @@ const FormProject = () => {
         <Input
           label="Nome"
           placeholder="Nome do Projeto"
-          type="description"
+          type="text"
           id="name"
           required
           value={projectData.name}
@@ -181,9 +184,8 @@ const FormProject = () => {
         <Input
           label="Bio"
           placeholder="Descrição"
-          type="text"
+          type="description"
           id="bio"
-          required
           value={projectData.bio}
           onChange={handleInputChange}
           error={errors.bio}
@@ -197,7 +199,7 @@ const FormProject = () => {
           defaultValue="#4180AB"
           required
           value={projectData.favColor}
-         onChange={handleInputChange}
+          onChange={handleInputChange}
           error={errors.favColor}
         />
       </div>

@@ -13,10 +13,14 @@ const UserProvider = ({ children }) => {
     try {
       await api.post("/register", payload);
 
-      navigate("/home");
-      toast.success("Cadastro realizado com sucesso");
+      localStorage.removeItem("@TOKEN");
+      navigate("/");
+      toast.success("Cadastro realizado com sucesso.");
     } catch (error) {
-      if (error.response?.data === "Email already exists") {
+      if (
+        error.response?.data?.error_message ===
+        "The email has already been taken."
+      ) {
         toast.error("E-mail já cadastrado.");
       }
     }
@@ -30,11 +34,10 @@ const UserProvider = ({ children }) => {
       localStorage.setItem("@TOKEN", data.data.token);
 
       navigate("/home");
-      toast.success("Login bem-sucedido");
+      toast.success("Login bem-sucedido.");
     } catch (error) {
       if (
-        error.response?.data?.message ===
-        "Incorrect email / password combination"
+        error.response?.data?.error_message === "The selected email is invalid."
       ) {
         toast.error("Credenciais inválidas");
       }

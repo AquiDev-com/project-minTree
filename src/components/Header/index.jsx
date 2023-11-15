@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { useContext } from "react";
-import { UserContext } from "../../providers/UserContext";
+import { CgEnter } from "react-icons/cg";
+import { UserContext } from "../../providers/userContext";
 
 const Header = ({ showButton, showLogout }) => {
   const { userLogout } = useContext(UserContext);
@@ -21,7 +22,7 @@ const Header = ({ showButton, showLogout }) => {
 
         {showLogout && (
           <button onClick={userLogout}>
-            <BsArrowReturnLeft />
+            <CgEnter />
           </button>
         )}
       </header>
