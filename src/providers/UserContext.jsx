@@ -40,10 +40,13 @@ const UserProvider = ({ children }) => {
         error.response?.data?.error_message === "The selected email is invalid."
       ) {
         toast.error("Credenciais inválidas");
+      } else {
+        toast.error(
+          "Ocorreu um erro ao fazer login. Verifique suas credencias."
+        );
       }
     }
   };
-
   const userLogout = () => {
     localStorage.removeItem("@TOKEN");
     navigate("/");

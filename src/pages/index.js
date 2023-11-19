@@ -5,8 +5,10 @@ import EmailResetPage from "./emailResetPage";
 import ProjectsPage from "./homePage";
 import RegisterPage from "./registerPage";
 import HomePage from "./homePage";
+import LinkPage from "./linkPage/index";
 
 export {
+  LinkPage,
   HomePage,
   ProjectPage,
   LoginPage,
