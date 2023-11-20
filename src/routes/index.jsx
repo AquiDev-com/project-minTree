@@ -19,7 +19,7 @@ export default () => {
         <Route path="/recuperar-senha" element={<PasswordResetPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/projeto" element={<ProjectPage />} />
-        <Route path="/link" element={<LinkPage />} />
+        <Route path="/page/:slug" element={<LinkPage />} />
       </Routes>
     </>
   );
