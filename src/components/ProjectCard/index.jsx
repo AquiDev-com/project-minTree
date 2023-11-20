@@ -47,7 +47,9 @@ const ProjectCard = () => {
           <div className={styles.iconBack}>
             <div className={styles.funcButtons}>
               <button className={styles.edit}>
-                <BiEdit />
+                <Link to={`/projeto/${project.slug}`}>
+                  <BiEdit />
+                </Link>
               </button>
               <button className={styles.link}>
                 <Link to={project.url}>
@@ -80,7 +82,7 @@ const ProjectCard = () => {
       ))}
       {projects.length === 0 && (
         <div className={styles.buttonContainer}>
-          <Link to="/projeto">
+          <Link to="/criar-projeto">
             <button>
               <IoAddCircleSharp /> Criar um projeto
             </button>

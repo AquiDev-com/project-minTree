@@ -9,12 +9,7 @@ const LinkPage = () => {
 
   const listProject = async () => {
     try {
-      const token = localStorage.getItem("@TOKEN");
-      const response = await api.get(`/project/${slug}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.get(`/project/${slug}`);
 
       setProject(response.data.data);
 

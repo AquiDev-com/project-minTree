@@ -15,10 +15,11 @@ const generateRandomId = () => {
   return Math.random().toString(36).substr(2, 9);
 };
 
-const FormProject = () => {
+const FormProject = ({ editing = null }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [changedOptions, setChangedOptions] = useState(false);
   const socialOptions = [
     "Facebook",
     "Twitter",
@@ -35,7 +36,7 @@ const FormProject = () => {
     bio: z.string().nonempty("Bio is required"),
     favColor: z.string().nonempty("Favorite color is required"),
   });
-  const [projectData, setprojectData] = useState({
+  const [projectData, setProjectData] = useState({
     name: "",
     bio: "",
     favColor: "#4180AB",
@@ -43,8 +44,33 @@ const FormProject = () => {
 
   const [errors, setErrors] = useState({});
 
+  useState(() => {
+    console.log('received project', editing);
+ 
+    if (editing) {
+      const { image, title, primary_color, buttons } = editing;
+    
+      setSelectedImage(image);
+      
+      setProjectData({
+        ...editing,
+        name: title,
+        favColor: primary_color
+      });
+    
+      const transformedButtons = buttons.map(btn => ({
+        id: btn.id,
+        option: btn.title,
+        value: btn.url
+      }));
+    
+      console.log('transformedButtons', transformedButtons);
+      setSelectedOptions(transformedButtons);
+    }
+  }, []);
+
   const handleInputChange = (e) => {
-    setprojectData({
+    setProjectData({
       ...projectData,
       [e.target.id]: e.target.value,
     });
@@ -56,12 +82,16 @@ const FormProject = () => {
   };
 
   const handleOptionSelect = (option) => {
+    setChangedOptions(true);
     const id = generateRandomId();
     setSelectedOptions([...selectedOptions, { id, option, value: "" }]);
     setSelectedOption("");
+
+    console.log('selectedOptions', selectedOptions);
   };
 
   const handleRemoveOption = (id) => {
+    setChangedOptions(true);
     const updatedOptions = selectedOptions.filter((option) => option.id !== id);
     setSelectedOptions(updatedOptions);
   };
@@ -82,6 +112,7 @@ const FormProject = () => {
   };
 
   const handleSocialInput = (value, optionId) => {
+    setChangedOptions(true);
     const updatedOptions = selectedOptions.map((option) => {
       if (option.id === optionId) {
         return { ...option, value };
@@ -116,7 +147,10 @@ const FormProject = () => {
       formData.append("title", validatedData.name);
       formData.append("bio", validatedData.bio);
       formData.append("primary_color", validatedData.favColor);
-      formData.append("buttons", getButtons());
+
+      if (!editing || changedOptions) {
+        formData.append("buttons", getButtons());
+      }
 
       if (fileInputRef.current.files.length > 0) {
         formData.append("image", fileInputRef.current.files[0]);
@@ -125,15 +159,24 @@ const FormProject = () => {
 
       const token = localStorage.getItem("@TOKEN");
 
-      const response = await api.post("/project", formData, {
+      let endpoint = '/project';
+      if (editing) {
+        endpoint = `${endpoint}/${editing.id}`;
+      }
+
+      const response = await api.post(endpoint, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
 
-      toast.success("Projeto criado com sucesso, redirecionando...");
-      navigate("/home");
+      if (!editing) {
+        toast.success("Projeto criado com sucesso, redirecionando...");
+        navigate("/home");
+      } else {
+        toast.success("Projeto atualizado com sucesso");
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         setErrors(error.formErrors.fieldErrors);
@@ -233,6 +276,7 @@ const FormProject = () => {
               placeholder={`Adicione o link do seu ${option.option}`}
               type="text"
               required
+              value={option.value}
               onChange={(e) => handleSocialInput(e.target.value, option.id)}
             />
           </div>
