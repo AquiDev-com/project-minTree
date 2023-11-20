@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 import { OrComponent } from "../..";
 import Social from "../../Social";
 import { UserContext } from "../../../providers/UserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import LoginFormSchema from "./login.form.schema";
+import { ImSpinner2 } from "react-icons/im";
 
 const FormLogin = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -21,7 +24,8 @@ const FormLogin = () => {
   const { userLogin } = useContext(UserContext);
 
   const submit = (payload) => {
-    userLogin(payload);
+    setIsLoading(true);
+    userLogin(payload, setIsLoading);
   };
 
   return (
@@ -55,7 +59,8 @@ const FormLogin = () => {
             <span>Esqueceu sua senha?</span>
           </Link>
         </div>
-        <Button text="Entrar" styleType="primary" type="submit" />
+        {!isLoading && <Button text="Entrar" styleType="primary" type="submit" />}
+        {isLoading && <ImSpinner2 className="fa-spin" />}
 
         <OrComponent />
 

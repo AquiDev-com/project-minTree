@@ -9,7 +9,7 @@ const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  const registerUser = async (payload) => {
+  const registerUser = async (payload, setIsLoading = null) => {
     try {
       const { data } = await api.post("/register", payload);
 
@@ -17,6 +17,10 @@ const UserProvider = ({ children }) => {
       navigate("/home");
       toast.success("Cadastro realizado com sucesso.");
     } catch (error) {
+      if(setIsLoading) {
+        setIsLoading(false);
+      }
+
       if (
         error.response?.data?.error_message ===
         "The email has already been taken."
@@ -26,7 +30,7 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const userLogin = async (payload) => {
+  const userLogin = async (payload, setIsLoading = null) => {
     try {
       const { data } = await api.post("/login", payload);
 
@@ -35,6 +39,10 @@ const UserProvider = ({ children }) => {
       navigate("/home");
       toast.success("Login bem-sucedido.");
     } catch (error) {
+      if(setIsLoading) {
+        setIsLoading(false);
+      }
+
       if (
         error.response?.data?.error_message === "The selected email is invalid."
       ) {

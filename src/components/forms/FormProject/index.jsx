@@ -10,12 +10,14 @@ import { z } from "zod";
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { ImSpinner2 } from "react-icons/im";
 
 const generateRandomId = () => {
   return Math.random().toString(36).substr(2, 9);
 };
 
 const FormProject = ({ editing = null }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -135,6 +137,8 @@ const FormProject = ({ editing = null }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     try {
       const validatedData = schema.parse(projectData);
 
@@ -165,6 +169,8 @@ const FormProject = ({ editing = null }) => {
         },
       });
 
+      setIsLoading(false);
+
       if (!editing) {
         toast.success("Projeto criado com sucesso, redirecionando...");
         navigate("/home");
@@ -172,6 +178,8 @@ const FormProject = ({ editing = null }) => {
         toast.success("Projeto atualizado com sucesso");
       }
     } catch (error) {
+      setIsLoading(false);
+
       if (error instanceof z.ZodError) {
         setErrors(error.formErrors.fieldErrors);
       } else {
@@ -276,7 +284,8 @@ const FormProject = ({ editing = null }) => {
           </div>
         ))}
       </div>
-      <Button type="submit" text="Confirmar" styleType="primary" />
+      {!isLoading && <Button type="submit" text="Confirmar" styleType="primary" />}
+      {isLoading && <ImSpinner2 className="fa-spin" />}
     </form>
   );
 };
