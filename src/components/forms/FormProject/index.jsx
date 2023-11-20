@@ -96,6 +96,10 @@ const FormProject = ({ editing = null }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > 2 * 1024 * 1024) {
+        return toast.error('A imagem não pode ter mais que 2MB');
+      }
+  
       const reader = new FileReader();
       reader.onloadend = () => {
         setSelectedImage(reader.result);
