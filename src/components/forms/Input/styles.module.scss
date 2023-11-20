@@ -12,9 +12,9 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
     &::placeholder {
-      color: var(--color4);
-      font-size: 10px;
+      color: rgba(0, 0, 0, 0.5);
     }
+
     &:focus {
       border-color: var(--color1);
       box-shadow: 0 0 2px rgba(33, 60, 117, 0.589);

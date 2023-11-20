@@ -254,7 +254,7 @@ const FormProject = ({ editing = null }) => {
           value={selectedOption}
           onChange={(e) => handleOptionSelect(e.target.value)}
         >
-          <option value="">Adicione mais opções</option>
+          <option value="">Selecione uma rede social</option>
           {socialOptions.map((option) => (
             <option key={option} value={option}>
               {option}
