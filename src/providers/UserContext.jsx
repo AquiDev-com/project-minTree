@@ -11,10 +11,10 @@ const UserProvider = ({ children }) => {
 
   const registerUser = async (payload) => {
     try {
-      await api.post("/register", payload);
+      const { data } = await api.post("/register", payload);
 
-      localStorage.removeItem("@TOKEN");
-      navigate("/");
+      localStorage.setItem("@TOKEN", data.data.token);
+      navigate("/home");
       toast.success("Cadastro realizado com sucesso.");
     } catch (error) {
       if (
