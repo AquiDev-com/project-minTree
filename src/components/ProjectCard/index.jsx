@@ -23,7 +23,6 @@ const ProjectCard = () => {
         },
       });
       setProjects(response.data.data);
-      console.log('project', response.data.data);
     } catch (error) {
       console.error("Erro ao listar projetos:", error);
     }

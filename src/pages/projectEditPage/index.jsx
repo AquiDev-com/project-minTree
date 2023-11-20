@@ -19,8 +19,6 @@ const ProjectEditPage = () => {
       });
 
       setProject(response.data.data);
-
-      console.log('loaded project to edit', response.data.data);
     } catch (error) {
       console.error("Erro ao listar projetos:", error);
     }

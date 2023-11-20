@@ -20,10 +20,6 @@ const FormRegister = () => {
   const { registerUser } = useContext(UserContext);
 
   const submit = (payload) => {
-    console.log("payload", payload);
-    console.log("name:", payload.name);
-    console.log("email:", payload.email);
-    console.log("password:", payload.password);
     registerUser(payload);
   };
 

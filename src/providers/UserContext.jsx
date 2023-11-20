@@ -30,7 +30,6 @@ const UserProvider = ({ children }) => {
     try {
       const { data } = await api.post("/login", payload);
 
-      console.log(data);
       localStorage.setItem("@TOKEN", data.data.token);
 
       navigate("/home");

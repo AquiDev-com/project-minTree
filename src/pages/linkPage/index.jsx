@@ -12,8 +12,6 @@ const LinkPage = () => {
       const response = await api.get(`/project/${slug}`);
 
       setProject(response.data.data);
-
-      console.log('loaded project', response.data.data);
     } catch (error) {
       console.error("Erro ao listar projetos:", error);
     }

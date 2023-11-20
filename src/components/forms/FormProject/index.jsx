@@ -45,8 +45,6 @@ const FormProject = ({ editing = null }) => {
   const [errors, setErrors] = useState({});
 
   useState(() => {
-    console.log('received project', editing);
- 
     if (editing) {
       const { image, title, primary_color, buttons } = editing;
     
@@ -64,7 +62,6 @@ const FormProject = ({ editing = null }) => {
         value: btn.url
       }));
     
-      console.log('transformedButtons', transformedButtons);
       setSelectedOptions(transformedButtons);
     }
   }, []);
@@ -86,8 +83,6 @@ const FormProject = ({ editing = null }) => {
     const id = generateRandomId();
     setSelectedOptions([...selectedOptions, { id, option, value: "" }]);
     setSelectedOption("");
-
-    console.log('selectedOptions', selectedOptions);
   };
 
   const handleRemoveOption = (id) => {
@@ -155,7 +150,6 @@ const FormProject = ({ editing = null }) => {
       if (fileInputRef.current.files.length > 0) {
         formData.append("image", fileInputRef.current.files[0]);
       }
-      console.log("Form Values:", projectData);
 
       const token = localStorage.getItem("@TOKEN");
 
