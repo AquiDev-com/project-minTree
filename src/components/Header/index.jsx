@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { useContext } from "react";
 import { CgEnter } from "react-icons/cg";
-import { UserContext } from "../../providers/userContext";
+import { UserContext } from "../../providers/UserContext";
 
 const Header = ({ showButton, showLogout }) => {
   const { userLogout } = useContext(UserContext);
