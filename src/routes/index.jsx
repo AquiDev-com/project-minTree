@@ -21,7 +21,8 @@ export default () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/criar-projeto" element={<ProjectPage />} />
         <Route path="/projeto/:slug" element={<ProjectEditPage />} />
-        <Route path="/page/:slug" element={<LinkPage />} />
+        {/* Rota livre */}
+        <Route path="/page/:slug" element={<LinkPage />} />{" "}
       </Routes>
     </>
   );

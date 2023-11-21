@@ -17,7 +17,7 @@ const UserProvider = ({ children }) => {
       navigate("/home");
       toast.success("Cadastro realizado com sucesso.");
     } catch (error) {
-      if(setIsLoading) {
+      if (setIsLoading) {
         setIsLoading(false);
       }
 
@@ -39,7 +39,7 @@ const UserProvider = ({ children }) => {
       navigate("/home");
       toast.success("Login bem-sucedido.");
     } catch (error) {
-      if(setIsLoading) {
+      if (setIsLoading) {
         setIsLoading(false);
       }
 
@@ -56,7 +56,16 @@ const UserProvider = ({ children }) => {
   };
   const userLogout = () => {
     localStorage.removeItem("@TOKEN");
-    navigate("/");
+
+    const currentPath = window.location.pathname;
+    const protectedRoutes = ["/home", "/criar-projeto", "/projeto/:slug"];
+    const isProtectedRoute = protectedRoutes.some((route) =>
+      currentPath.includes(route)
+    );
+
+    if (isProtectedRoute) {
+      window.location.href = "/";
+    }
   };
 
   const loadUser = async () => {
@@ -66,6 +75,7 @@ const UserProvider = ({ children }) => {
       userLogout();
       return;
     }
+
     try {
       const { data } = await api.get(`/me`, {
         headers: {
@@ -74,7 +84,12 @@ const UserProvider = ({ children }) => {
       });
       setUser(data);
     } catch (error) {
-      userLogout();
+      if (error.response && error.response.status === 401) {
+        const currentPath = window.location.pathname;
+        if (!currentPath.includes("/page/")) {
+          userLogout();
+        }
+      }
     }
   };
 

@@ -29,13 +29,12 @@ const ProjectCard = () => {
   };
 
   const handleQRCodeDownload = async (qrcodeUrl) => {
-    window.open(qrcodeUrl, '_blank');
+    window.open(qrcodeUrl, "_blank");
   };
 
   const handleQRCodeUrlCopy = (projectUrl) => {
-    navigator.clipboard.writeText(projectUrl)
-    .then(() => {
-      toast.success('O link do QRCode foi copiado com sucesso');
+    navigator.clipboard.writeText(projectUrl).then(() => {
+      toast.success("O link do QRCode foi copiado com sucesso");
     });
   };
 
@@ -45,16 +44,13 @@ const ProjectCard = () => {
         <div key={project.id} className={styles.cardContainer}>
           <div className={styles.iconBack}>
             <div className={styles.funcButtons}>
-              <button className={styles.edit}>
-                <Link to={`/projeto/${project.slug}`}>
-                  <BiEdit />
-                </Link>
-              </button>
-              <button className={styles.link}>
-                <Link to={project.url}>
-                  <CgLink />
-                </Link>
-              </button>
+              <Link to={`/projeto/${project.slug}`}>
+                <BiEdit />
+              </Link>
+
+              <Link to={project.url} target="_blank">
+                <CgLink />
+              </Link>
             </div>
             <div className={styles.iconContainer}>
               <img src={project.image} alt={project.slug} />
@@ -72,8 +68,12 @@ const ProjectCard = () => {
                 <div>
                   <img src={project.qrcode} />
                 </div>
-                <button onClick={() => handleQRCodeDownload(project.qrcode)}>Baixar QRCode</button>
-                <button onClick={() => handleQRCodeUrlCopy(project.url)}>Copiar link do QRCode</button>
+                <button onClick={() => handleQRCodeDownload(project.qrcode)}>
+                  Baixar QRCode
+                </button>
+                <button onClick={() => handleQRCodeUrlCopy(project.url)}>
+                  Copiar link do QRCode
+                </button>
               </div>
             </div>
           </div>

@@ -2,12 +2,13 @@ import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 import { api } from "./../../services/api";
 import { useParams } from "react-router-dom";
-import { generateColorVariations } from '../../utils/colorUtils';
+import { generateColorVariations } from "../../utils/colorUtils";
 
-const LinkPage = () => {
+const LinkPage = ({ buttons = [] }) => {
   const { slug } = useParams();
   const [project, setProject] = useState([]);
   const [colorVariations, setColorVariations] = useState([]);
+  console.log("Buttons:", buttons);
 
   const listProject = async () => {
     try {
@@ -15,7 +16,10 @@ const LinkPage = () => {
 
       setProject(response.data.data);
 
-      setColorVariations(generateColorVariations(response.data.data.primary_color, 'primary'));
+      setColorVariations(
+        generateColorVariations(response.data.data.primary_color, "primary")
+      );
+      console.log(response, "aaaa");
     } catch (error) {
       console.error("Erro ao listar projetos:", error);
     }
@@ -38,6 +42,16 @@ const LinkPage = () => {
             <h2>{project.title}</h2>
             <p>{project.bio}</p>
           </div>
+        </div>
+        <div className={styles.buttonsContainer}>
+          {response.data.data.buttons.map((button) => (
+            <button
+              key={button.id}
+              onClick={() => (window.location.href = button.url)}
+            >
+              {button.title}
+            </button>
+          ))}
         </div>
       </div>
     </>
