@@ -4,11 +4,10 @@ import { api } from "./../../services/api";
 import { useParams } from "react-router-dom";
 import { generateColorVariations } from "../../utils/colorUtils";
 
-const LinkPage = ({ buttons = [] }) => {
+const LinkPage = () => {
   const { slug } = useParams();
-  const [project, setProject] = useState([]);
+  const [project, setProject] = useState({});
   const [colorVariations, setColorVariations] = useState([]);
-  console.log("Buttons:", buttons);
 
   const listProject = async () => {
     try {
@@ -19,7 +18,6 @@ const LinkPage = ({ buttons = [] }) => {
       setColorVariations(
         generateColorVariations(response.data.data.primary_color, "primary")
       );
-      console.log(response, "aaaa");
     } catch (error) {
       console.error("Erro ao listar projetos:", error);
     }
@@ -44,14 +42,15 @@ const LinkPage = ({ buttons = [] }) => {
           </div>
         </div>
         <div className={styles.buttonsContainer}>
-          {response.data.data.buttons.map((button) => (
-            <button
-              key={button.id}
-              onClick={() => (window.location.href = button.url)}
-            >
-              {button.title}
-            </button>
-          ))}
+          {project.buttons &&
+            project.buttons.map((button) => (
+              <button
+                key={button.id}
+                onClick={() => (window.location.href = button.url)}
+              >
+                {button.title}
+              </button>
+            ))}
         </div>
       </div>
     </>

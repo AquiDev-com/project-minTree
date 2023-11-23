@@ -72,7 +72,7 @@ const ProjectCard = () => {
                   Baixar QRCode
                 </button>
                 <button onClick={() => handleQRCodeUrlCopy(project.url)}>
-                  Copiar link do QRCode
+                  Copiar QRCode
                 </button>
               </div>
             </div>
