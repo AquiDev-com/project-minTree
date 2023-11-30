@@ -7,7 +7,7 @@ import {
 } from "./forms";
 import Header from "./Header/index";
 import OrComponent from "./OrComponent";
-import Banner from "./Banner";
+
 import ProjectCard from "./ProjectCard";
 
 export {
@@ -18,6 +18,5 @@ export {
   FormLogin,
   FormRegister,
   Header,
-  Banner,
   Button,
 };

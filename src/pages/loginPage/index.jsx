@@ -1,23 +1,36 @@
-import { Header, FormLogin, Banner } from "../../components";
+import { useState } from "react";
+import { FormLogin, FormRegister } from "../../components";
+import logo from "../../assets/logo.png";
 import styles from "./styles.module.scss";
 
 const LoginPage = () => {
+  const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
+
+  const handleShowLoginForm = () => {
+    setIsLoginFormVisible(true);
+  };
+
+  const handleShowRegisterForm = () => {
+    setIsLoginFormVisible(false);
+  };
+
   return (
     <>
       <div className={styles.pageContainer}>
-        <Header></Header>
         <main>
-          <FormLogin />
-          <Banner
-            title="Nova conta?"
-            paragraph="Crie sua conta e aproveite
-            tudo que temos a oferecer!"
-            text="Registrar-se"
-            to="/registrar"
-          />
+          <div className={styles.toggleContainer}>
+            <img src={logo} />
+            <div className={styles.buttonsContainer}>
+              <button onClick={handleShowLoginForm}>Fazer login</button>
+
+              <button onClick={handleShowRegisterForm}>Criar conta</button>
+            </div>
+          </div>
+          {isLoginFormVisible ? <FormLogin /> : <FormRegister />}
         </main>
       </div>
     </>
   );
 };
+
 export default LoginPage;

@@ -6,7 +6,6 @@ import {
   LoginPage,
   PasswordResetPage,
   HomePage,
-  RegisterPage,
   EmailResetPage,
 } from "../pages";
 
@@ -15,7 +14,6 @@ export default () => {
     <>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/registrar" element={<RegisterPage />} />
         <Route path="/recuperar-email" element={<EmailResetPage />} />
         <Route path="/recuperar-senha" element={<PasswordResetPage />} />
         <Route path="/home" element={<HomePage />} />

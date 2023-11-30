@@ -1,4 +1,3 @@
-import FormHeader from "./FormHeader";
 import FormLogin from "./FormLogin";
 import FormProject from "./FormProject";
 import FormRegister from "./FormRegister";
@@ -17,5 +16,4 @@ export {
   FormLogin,
   FormRegister,
   Input,
-  FormHeader,
 };

@@ -1,7 +1,4 @@
-import OrComponent from "../../OrComponent";
 import Button from "../../Button";
-import Social from "../../Social";
-import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import { useContext, useState } from "react";
@@ -30,7 +27,6 @@ const FormRegister = () => {
   return (
     <>
       <form className={styles.formContainer} onSubmit={handleSubmit(submit)}>
-        <FormHeader title="Faça seu cadastro" text="Crie sua conta" />
         <div className={styles.divContainer}>
           <Input
             label="Nome:"
@@ -73,12 +69,10 @@ const FormRegister = () => {
           />
           {errors.c_password ? <p>{errors.c_password.message}</p> : null}
         </div>
-        {!isLoading && <Button text="Registrar" styleType="primary" type="submit" />}
+        {!isLoading && (
+          <Button text="Registrar" styleType="primary" type="submit" />
+        )}
         {isLoading && <ImSpinner2 className="fa-spin" />}
-
-        <OrComponent />
-
-        <Social />
       </form>
     </>
   );

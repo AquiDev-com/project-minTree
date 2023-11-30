@@ -1,5 +1,4 @@
 import Button from "../../Button";
-import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 
@@ -7,7 +6,6 @@ const FormResetEmail = () => {
   return (
     <>
       <form className={styles.formContainer}>
-        <FormHeader title="Redefina sua senha" text="Insira seu e-mail" />
         <div className={styles.divContainer}>
           <Input
             label="E-mail:"

@@ -1,14 +1,24 @@
 .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 70px;
   align-items: center;
+  background-color: var(--color-100-primary);
+  width: 350px;
+  display: flex;
+  gap: 65px;
+  padding-bottom: 35px;
+  padding-top: 55px;
 
+  p {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-400-primary);
+  }
   .divContainer {
     display: flex;
     flex-direction: column;
     gap: 15px;
+
     p {
       text-align: left;
       color: #da5d5d;
@@ -16,20 +26,16 @@
       font-weight: bold;
     }
   }
+
   a,
   span {
-    color: var(--color3);
+    color: var(--color-400-primary);
     font-size: 10px;
     text-align: end;
-    font-weight: bold;
     text-decoration: none;
-  }
 
-  .socialContainer {
-    color: var(--color1);
-    display: flex;
-    gap: 15px;
-    font-size: 30px;
-    cursor: pointer;
+    &:hover {
+      color: white;
+    }
   }
 }

@@ -11,7 +11,7 @@ const Header = ({ showButton, showLogout }) => {
   return (
     <>
       <header className={styles.headerContainer}>
-        <h1>Waka Waka</h1>
+        <h1>MinTree</h1>
         {showButton && (
           <Link to={"/home"}>
             <button>

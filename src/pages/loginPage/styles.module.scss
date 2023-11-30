@@ -1,15 +1,39 @@
 .pageContainer {
   main {
     display: flex;
-    flex-direction: column;
-    gap: 50px;
-    background-color: var(--color5);
     margin: auto;
-    form {
-      max-width: 375px;
-      margin: auto;
-      padding-top: 50px;
-      height: 530px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+    .toggleContainer {
+      background-color: var(--color-100-primary);
+      width: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .buttonsContainer {
+        display: flex;
+        gap: 15px;
+        button {
+          background-color: var(--color-100-primary);
+          border: none;
+          color: var(--color-400-primary);
+          font-weight: 600;
+          font-size: 15px;
+
+          &:hover {
+            color: var(--color-200-primary);
+          }
+        }
+      }
+
+      img {
+        border-radius: 50%;
+        width: 100px;
+      }
     }
   }
 }

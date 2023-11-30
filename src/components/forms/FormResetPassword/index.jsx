@@ -1,6 +1,5 @@
 import { OrComponent } from "../..";
 import Button from "../../Button";
-import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
@@ -9,7 +8,6 @@ const FormResetPassword = (to) => {
   return (
     <>
       <form className={styles.formContainer}>
-        <FormHeader title="Redefina sua senha" text="Insira uma nova senha" />
         <div className={styles.divContainer}>
           <Input
             label="Nova senha:"

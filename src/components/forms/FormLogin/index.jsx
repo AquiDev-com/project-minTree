@@ -1,10 +1,7 @@
 import Button from "../../Button";
-import FormHeader from "../FormHeader";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
-import { OrComponent } from "../..";
-import Social from "../../Social";
 import { UserContext } from "../../../providers/UserContext";
 import { useContext, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,10 +28,6 @@ const FormLogin = () => {
   return (
     <>
       <form className={styles.formContainer} onSubmit={handleSubmit(submit)}>
-        <FormHeader
-          title="Faça o login em sua conta"
-          text="Insira seu e-mail e senha. "
-        />
         <div className={styles.divContainer}>
           <Input
             label="E-mail:"
@@ -59,12 +52,10 @@ const FormLogin = () => {
             <span>Esqueceu sua senha?</span>
           </Link>
         </div>
-        {!isLoading && <Button text="Entrar" styleType="primary" type="submit" />}
+        {!isLoading && (
+          <Button text="Entrar" styleType="primary" type="submit" />
+        )}
         {isLoading && <ImSpinner2 className="fa-spin" />}
-
-        <OrComponent />
-
-        <Social />
       </form>
     </>
   );

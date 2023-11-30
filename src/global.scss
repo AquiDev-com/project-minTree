@@ -1,9 +1,14 @@
 :root {
-  --color1: #4180ab;
-  --color2: #ffffff;
-  --color3: #8ab3cf;
-  --color4: #bdd1de;
-  --color5: #e4ebf0;
+  --color-100-primary: #e6f7fa;
+  --color-200-primary: #a8e2ed;
+  --color-300-primary: #7dd4e3;
+  --color-400-primary: #51c5da;
+  --color-500-primary: #3d94a4;
+  --color-600-primary: #29636d;
+  --color-700-primary: #143137;
+  --color-text: #000000;
+  --color-text-primary: rgb(199, 198, 198);
+  --color-text-secondary: #ffffff;
 
   --font: "Poppins", sans-serif;
 }
@@ -11,8 +16,11 @@ body,
 * {
   font-family: var(--font);
 }
-body, html {
-  background-color: var(--color5);
+body,
+html {
+  background-color: var(--color-400-primary);
+  height: 100%;
+  margin: 0;
 }
 button {
   cursor: pointer;

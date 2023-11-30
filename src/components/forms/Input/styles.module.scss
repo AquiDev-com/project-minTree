@@ -1,31 +1,31 @@
 .inputContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   align-items: flex-start;
 
   Input {
-    border: 1px solid var(--color4);
+    border: 1px solid var(--color-200-primary);
     width: 260px;
     padding: 8px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
+    background-color: var(--color-text-secondary);
     &::placeholder {
-      color: rgba(0, 0, 0, 0.5);
+      color: var(--color-text-primary);
+      font-size: 12px;
+      font-weight: 500;
     }
 
     &:focus {
-      border-color: var(--color1);
-      box-shadow: 0 0 2px rgba(33, 60, 117, 0.589);
+      border-color: var(--color-400-primary);
       outline: none;
-      caret-color: var(--color4);
+      caret-color: var(--color-400-primary);
     }
   }
   label {
-    color: var(--color3);
-    font-size: 13px;
+    color: var(--color-400-primary);
+    font-size: 12px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 500;
   }
 }
